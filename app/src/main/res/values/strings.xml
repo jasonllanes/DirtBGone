@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Booking_App</string>
+    <string name="services"><b>OVERVIEW OF THE BUSINESS SERVICES:</b></string>
+    <string name="edit"><u>Edit your profile here...</u></string>
+</resources>
