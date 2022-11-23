@@ -13,4 +13,5 @@
     <color name="dblue">#169C8C</color>
     <color name="green">#48B12B</color>
     <color name="orange">#FFC107</color>
+    <color name="red">#FF0000</color>
 </resources>

@@ -223,6 +223,17 @@
                 android:textSize="25dp"/>
 
             <TextView
+                android:id="@+id/tvNote"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Note: The cost may vary, and can only be\ndetermined by the assigned contractor."
+                android:textColor="@color/red"
+                android:textSize="15dp"
+                android:textStyle="italic" />
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Accommodated by other person? "

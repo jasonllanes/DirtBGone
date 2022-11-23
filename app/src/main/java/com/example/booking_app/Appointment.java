@@ -32,6 +32,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class Appointment extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -40,14 +42,16 @@ public class Appointment extends AppCompatActivity {
 
     DatePicker dp_date;
     TimePicker tpTime;
-    TextView tvName,tvAddress,tvNumber,tvEmail,tvID,tvService;
+    TextView tvName,tvAddress,tvNumber,tvEmail,tvID,tvService,tvNote;
     RadioGroup rgCleaning;
     Spinner sSQM;
     EditText etAccommodated,etNotes;
     Button btnBack,btnNext;
-    int estimatedPrice;
+    String estimatedPrice;
 
     public String cleaning;
+    private static AtomicLong idCounter = new AtomicLong();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,14 +77,30 @@ public class Appointment extends AppCompatActivity {
         tvEmail = findViewById(R.id.tvEmail);
         tvNumber = findViewById(R.id.tvNumber);
         tvAddress = findViewById(R.id.tvAdrress);
+        tvNote = findViewById(R.id.tvNote);
 
         tvID = findViewById(R.id.tvID);
+
+
         tvService = findViewById(R.id.tvService);
 
 
         mAuth = FirebaseAuth.getInstance();
+        int max=100; int min=0;
+        Random randomNum = new Random();
+
+        int randomID1 = randomNum.nextInt(max);
+        int randomID2 = randomNum.nextInt(max);
+        int randomID3 = randomNum.nextInt(max);
+        int randomID4 = randomNum.nextInt(max);
+        int randomID5 = randomNum.nextInt(max);
+
+        tvID.setText(mAuth.getUid().substring(0,5)+randomID1+randomID2+randomID3+randomID4+randomID5);
+
 
         SpinnerItems();
+
+
 
         rgCleaning.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -132,17 +152,26 @@ public class Appointment extends AppCompatActivity {
         sSQM.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if(sSQM.getSelectedItem().toString().equalsIgnoreCase("Select among the choices...")){
+                    Toast.makeText(Appointment.this, "Please select the square meter", Toast.LENGTH_SHORT).show();
+                }else if(sSQM.getSelectedItem().toString().equalsIgnoreCase("Not sure")){
+                    Toast.makeText(Appointment.this, "Please read the note", Toast.LENGTH_SHORT).show();
+                    tvNote.setVisibility(View.VISIBLE);
+                }
                 switch(i){
                     case 1:
                         if(cleaning == "Deep"){
                             Toast.makeText(Appointment.this, "₱4,200.00", Toast.LENGTH_SHORT).show();
+                            estimatedPrice = "4,200.00";
                         }else if(cleaning == "Surface"){
                             Toast.makeText(Appointment.this, "₱3,750.00", Toast.LENGTH_SHORT).show();
+                            estimatedPrice = "₱3,750.00";
                         }
                         break;
                     case 2:
                         if(cleaning == "Deep"){
                             Toast.makeText(Appointment.this, "₱85/SQM ", Toast.LENGTH_SHORT).show();
+                            estimatedPrice = "₱85/SQM";
                         }else if(cleaning == "Surface"){
                             Toast.makeText(Appointment.this, "₱75/SQM ", Toast.LENGTH_SHORT).show();
                         }
@@ -195,7 +224,9 @@ public class Appointment extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 getAppointment();
+
             }
         });
 
@@ -222,41 +253,100 @@ public class Appointment extends AppCompatActivity {
     }
 
     public void getAppointment(){
-        String fullname = tvName.getText().toString();
-        String address = tvAddress.getText().toString();
-        String number = tvNumber.getText().toString();
-        String email = tvEmail.getText().toString();
-        String bookingID = tvID.getText().toString();
-        String service = tvService.getText().toString();
-        String clean = cleaning;
-        String sqm = sSQM.getSelectedItem().toString();
-        String person = etAccommodated.getText().toString();
-        String note = etNotes.getText().toString();
+        if(sSQM.getSelectedItem().toString().equalsIgnoreCase("Select among the choices...")){
+            Toast.makeText(Appointment.this, "Please select the square meter", Toast.LENGTH_SHORT).show();
+        }else if(sSQM.getSelectedItem().toString().equalsIgnoreCase("Not sure")){
+            Toast.makeText(Appointment.this, "Please read the note", Toast.LENGTH_SHORT).show();
+            tvNote.setVisibility(View.VISIBLE);
+            String fullname = tvName.getText().toString();
+            String address = tvAddress.getText().toString();
+            String number = tvNumber.getText().toString();
+            String email = tvEmail.getText().toString();
+            String bookingID = tvID.getText().toString();
+            String service = tvService.getText().toString();
+            String clean = cleaning;
+            String sqm = sSQM.getSelectedItem().toString();
+            String person = etAccommodated.getText().toString();
+            String note = etNotes.getText().toString();
 
-        String date = dp_date.getMonth() + "/" + dp_date.getDayOfMonth() + "/" + dp_date.getYear();
-        String timee;
-        if(tpTime.getCurrentHour() < 12 ){
-            timee = "AM";
-        }else{
-            timee = "PM";
-        }
-        String time = tpTime.getCurrentHour() + ": " + tpTime.getCurrentMinute() + " " + timee;
-
-        AppointmentDetails appointmentDetails = new AppointmentDetails(fullname,address,number,email,bookingID,service,clean,sqm,person,note,date,time);
-        myRef.child(mAuth.getUid()).setValue(appointmentDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-
-                if (task.isSuccessful()) {
-                    Toast.makeText(Appointment.this, "Success", Toast.LENGTH_SHORT).show();
-
-                }else{
-                    Toast.makeText(Appointment.this, "Failed", Toast.LENGTH_SHORT).show();
-
-                }
+            String date = dp_date.getMonth() + "/" + dp_date.getDayOfMonth() + "/" + dp_date.getYear();
+            String timee;
+            if(tpTime.getCurrentHour() < 12 ){
+                timee = "AM";
+            }else{
+                timee = "PM";
             }
-        });
+            String time = tpTime.getCurrentHour() + ": " + tpTime.getCurrentMinute() + " " + timee;
+
+            AppointmentDetails appointmentDetails = new AppointmentDetails(fullname,address,number,email,bookingID,service,clean,sqm,person,note,date,time);
+            myRef.child(bookingID).setValue(appointmentDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+
+                    if (task.isSuccessful()) {
+
+                        Toast.makeText(Appointment.this, "Success", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(Appointment.this, Transaction.class);
+                        i.putExtra("ID", bookingID);
+                        i.putExtra("Cleaning", cleaning);
+                        i.putExtra("SQM", sqm);
+                        startActivity(i);
+
+                    }else{
+                        Toast.makeText(Appointment.this, "Failed", Toast.LENGTH_SHORT).show();
+
+                    }
+                }
+            });
+
+
+        }else{
+            String fullname = tvName.getText().toString();
+            String address = tvAddress.getText().toString();
+            String number = tvNumber.getText().toString();
+            String email = tvEmail.getText().toString();
+            String bookingID = tvID.getText().toString();
+            String service = tvService.getText().toString();
+            String clean = cleaning;
+            String sqm = sSQM.getSelectedItem().toString();
+            String person = etAccommodated.getText().toString();
+            String note = etNotes.getText().toString();
+
+            String date = dp_date.getMonth() + "/" + dp_date.getDayOfMonth() + "/" + dp_date.getYear();
+            String timee;
+            if(tpTime.getCurrentHour() < 12 ){
+                timee = "AM";
+            }else{
+                timee = "PM";
+            }
+            String time = tpTime.getCurrentHour() + ": " + tpTime.getCurrentMinute() + " " + timee;
+
+            AppointmentDetails appointmentDetails = new AppointmentDetails(fullname,address,number,email,bookingID,service,clean,sqm,person,note,date,time);
+            myRef.child(bookingID).setValue(appointmentDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+
+                    if (task.isSuccessful()) {
+
+                        Toast.makeText(Appointment.this, "Success", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(Appointment.this, Transaction.class);
+                        i.putExtra("ID", bookingID);
+                        i.putExtra("Cleaning", cleaning);
+                        i.putExtra("SQM", sqm);
+                        startActivity(i);
+
+                    }else{
+                        Toast.makeText(Appointment.this, "Failed", Toast.LENGTH_SHORT).show();
+
+                    }
+                }
+            });
+
+
+        }
+
 
 
     }
+
 }
