@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Created Projects/Bookin App/app/src/main/res/drawable/back_btn.xml" value="0.159" />
+        <entry key="..\:/Created Projects/Bookin App/app/src/main/res/drawable/button_layout.xml" value="0.143" />
+        <entry key="..\:/Created Projects/Bookin App/app/src/main/res/drawable/container.xml" value="0.159" />
+        <entry key="..\:/Created Projects/Bookin App/app/src/main/res/drawable/gradient.xml" value="0.1595" />
+        <entry key="..\:/Created Projects/Bookin App/app/src/main/res/drawable/logout.xml" value="0.159" />
+        <entry key="..\:/Created Projects/Bookin App/app/src/main/res/drawable/profile.xml" value="0.1725" />
+        <entry key="..\:/Created Projects/Bookin App/app/src/main/res/layout/activity_admin_book_details_preview.xml" value="0.19384057971014493" />
+        <entry key="..\:/Created Projects/Bookin App/app/src/main/res/layout/activity_admin_booked.xml" value="0.1109375" />
+        <entry key="..\:/Created Projects/Bookin App/app/src/main/res/layout/activity_admin_completed.xml" value="0.19384057971014493" />
+        <entry key="..\:/Created Projects/Bookin App/app/src/main/res/layout/activity_admin_completed_book_details.xml" value="0.19384057971014493" />
+        <entry key="..\:/Created Projects/Bookin App/app/src/main/res/layout/activity_admin_pane.xml" value="0.19384057971014493" />
+        <entry key="..\:/Created Projects/Bookin App/app/src/main/res/layout/activity_admin_pending.xml" value="0.1" />
+        <entry key="..\:/Created Projects/Bookin App/app/src/main/res/layout/activity_admin_upcoming_book_details.xml" value="0.19384057971014493" />
+        <entry key="..\:/Created Projects/Bookin App/app/src/main/res/layout/activity_appointment.xml" value="0.19452054794520549" />
+        <entry key="..\:/Created Projects/Bookin App/app/src/main/res/layout/activity_book_details_preview.xml" value="0.19384057971014493" />
+        <entry key="..\:/Created Projects/Bookin App/app/src/main/res/layout/activity_completed.xml" value="0.19384057971014493" />
+        <entry key="..\:/Created Projects/Bookin App/app/src/main/res/layout/activity_completed_book_details.xml" value="0.22" />
+        <entry key="..\:/Created Projects/Bookin App/app/src/main/res/layout/activity_details.xml" value="0.25" />
+        <entry key="..\:/Created Projects/Bookin App/app/src/main/res/layout/activity_edit_profile.xml" value="0.19375" />
+        <entry key="..\:/Created Projects/Bookin App/app/src/main/res/layout/activity_gcash.xml" value="0.2" />
+        <entry key="..\:/Created Projects/Bookin App/app/src/main/res/layout/activity_log_in.xml" value="0.22" />
+        <entry key="..\:/Created Projects/Bookin App/app/src/main/res/layout/activity_main.xml" value="0.1644021739130435" />
+        <entry key="..\:/Created Projects/Bookin App/app/src/main/res/layout/activity_pending.xml" value="0.21" />
+        <entry key="..\:/Created Projects/Bookin App/app/src/main/res/layout/activity_post_construction_appointment.xml" value="0.2127872127872128" />
+        <entry key="..\:/Created Projects/Bookin App/app/src/main/res/layout/activity_sanitationand_disinfection_appointment.xml" value="0.1644021739130435" />
+        <entry key="..\:/Created Projects/Bookin App/app/src/main/res/layout/activity_services.xml" value="0.18" />
+        <entry key="..\:/Created Projects/Bookin App/app/src/main/res/layout/activity_sign_up.xml" value="0.22" />
+        <entry key="..\:/Created Projects/Bookin App/app/src/main/res/layout/activity_summary.xml" value="0.19384057971014493" />
+        <entry key="..\:/Created Projects/Bookin App/app/src/main/res/layout/activity_transaction.xml" value="0.22" />
+        <entry key="..\:/Created Projects/Bookin App/app/src/main/res/layout/activity_upcoming_book_details.xml" value="0.19384057971014493" />
+        <entry key="..\:/Created Projects/Bookin App/app/src/main/res/layout/activity_upcoming_booked.xml" value="0.19384057971014493" />
+        <entry key="..\:/Created Projects/Bookin App/app/src/main/res/layout/activity_upcoming_pane.xml" value="0.19384057971014493" />
+        <entry key="..\:/Created Projects/Bookin App/app/src/main/res/layout/activity_upholstery_appointment.xml" value="0.1610555050045496" />
+        <entry key="..\:/Created Projects/Bookin App/app/src/main/res/layout/button_layout.xml" value="0.1644021739130435" />
+        <entry key="..\:/Created Projects/Bookin App/app/src/main/res/layout/list_item.xml" value="0.22" />
+        <entry key="..\:/Created Projects/Bookin App/app/src/main/res/layout/view_proof.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

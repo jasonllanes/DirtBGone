@@ -44,8 +44,26 @@
                 android:layout_height="wrap_content"
                 android:text="''Please send your payment to the QR provided.''\nAfter sending please send the receipt\nfor us to verify the payment."
                 android:textAlignment="center"
-                android:textColor="@color/green"
+                android:textColor="@color/red"
+                android:textStyle="italic"
                 android:textSize="18dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TO PAY:"
+                android:textAlignment="center"
+                android:textColor="@color/green"
+                android:textStyle="bold"
+                android:textSize="28dp" />
+            <TextView
+                android:id="@+id/tvPay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="[AMMOUNT]"
+                android:textAlignment="center"
+                android:textColor="@color/red"
+                android:textStyle="bold"
+                android:textSize="35dp" />
 
             <ImageView
                 android:layout_width="match_parent"
@@ -79,13 +97,27 @@
                 android:textColor="@color/blue"
                 android:background="@drawable/container"/>
 
+
             <ImageView
                 android:id="@+id/ivReceipt"
+                android:visibility="gone"
                 android:layout_width="300dp"
                 android:layout_height="300dp"
-                android:background="@drawable/gcash"
-                android:layout_gravity="center"/>`
+                android:layout_gravity="center"/>
 
+            <Button
+                android:id="@+id/btnClear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="Delete Image"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/blue"
+                android:background="@drawable/container"/>
             <Button
                 android:id="@+id/btnNext"
                 android:layout_width="match_parent"
@@ -95,8 +127,8 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:text="Next"
+                android:visibility="gone"
                 android:textSize="20dp"
-                android:clickable="false"
                 android:textStyle="bold"
                 android:textColor="@color/blue"
                 android:background="@drawable/container"/>

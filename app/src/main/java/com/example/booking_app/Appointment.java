@@ -3,6 +3,7 @@ package com.example.booking_app;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -48,8 +49,8 @@ public class Appointment extends AppCompatActivity {
     EditText etAccommodated,etNotes;
     Button btnBack,btnNext;
     String estimatedPrice;
-
-    public String cleaning;
+    String service;
+    public String cleaning = "Deep";
     private static AtomicLong idCounter = new AtomicLong();
 
     @Override
@@ -65,8 +66,8 @@ public class Appointment extends AppCompatActivity {
         Calendar mcurrentDate = Calendar.getInstance();
         mcurrentDate.add(Calendar.DATE, 1);
         tpTime = findViewById(R.id.tpTime);
+        tpTime.setIs24HourView(false);
         dp_date.setMinDate(mcurrentDate.getTimeInMillis() - 1000);
-
         sSQM = findViewById(R.id.sSQM);
 
         etAccommodated = findViewById(R.id.etAccommodated);
@@ -99,7 +100,10 @@ public class Appointment extends AppCompatActivity {
 
 
         SpinnerItems();
+        estimatedPrice();
 
+         service = getIntent().getStringExtra("Service");
+         tvService.setText(service);
 
 
         rgCleaning.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -108,15 +112,219 @@ public class Appointment extends AppCompatActivity {
                 switch(i){
                     case R.id.rbDeep:
                         cleaning = "Deep";
+                        switch(sSQM.getSelectedItemPosition()){
+                            case 1:
+                                if(cleaning == "Deep"){
+                                    Toast.makeText(Appointment.this, "₱4,200.00", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "4,200.00";
+                                }else if(cleaning == "Surface"){
+                                    Toast.makeText(Appointment.this, "₱3,750.00", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "₱3,750.00";
+                                }
+                                break;
+                            case 2:
+                                if(cleaning == "Deep"){
+                                    Toast.makeText(Appointment.this, "₱85/SQM ", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "85,000";
+                                }else if(cleaning == "Surface"){
+                                    Toast.makeText(Appointment.this, "₱75/SQM ", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "75,000";
+                                }
+                                break;
+                            case 3:
+                                if(cleaning == "Deep"){
+                                    Toast.makeText(Appointment.this, "₱80/SQM", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "80,000";
+                                }else if(cleaning == "Surface"){
+                                    Toast.makeText(Appointment.this, "₱65/SQM ", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "65,000";
+                                }
+                                break;
+                            case 4:
+                                if(cleaning == "Deep"){
+                                    Toast.makeText(Appointment.this, "₱75/SQM", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "75,000";
+                                }else if(cleaning == "Surface"){
+                                    Toast.makeText(Appointment.this, "₱60/SQM ", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "60,000";
+                                }
+                                break;
+                            case 5:
+                                if(cleaning == "Deep"){
+                                    Toast.makeText(Appointment.this, "₱70/SQM", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "70,000";
+                                }else if(cleaning == "Surface"){
+                                    Toast.makeText(Appointment.this, "₱55/SQM ", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "55,000";
+                                }
+                                break;
+                            case 6:
+                                if(cleaning == "Deep"){
+                                    Toast.makeText(Appointment.this, "₱65/SQM", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "65,000";
+                                }else if(cleaning == "Surface"){
+                                    Toast.makeText(Appointment.this, "₱50/SQM ", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "50,000";
+                                }
+                                break;
+                            case 7:
+                                if(cleaning == "Deep"){
+                                    Toast.makeText(Appointment.this, "₱60/SQM", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "60,000";
+                                }else if(cleaning == "Surface"){
+                                    Toast.makeText(Appointment.this, "₱45/SQM ", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "45,000";
+                                }
+                                break;
+                        }
                         break;
                     case R.id.rbSurface:
                         cleaning = "Surface";
+                        switch(sSQM.getSelectedItemPosition()){
+                            case 1:
+                                if(cleaning == "Deep"){
+                                    Toast.makeText(Appointment.this, "₱4,200.00", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "4,200.00";
+                                }else if(cleaning == "Surface"){
+                                    Toast.makeText(Appointment.this, "₱3,750.00", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "₱3,750.00";
+                                }
+                                break;
+                            case 2:
+                                if(cleaning == "Deep"){
+                                    Toast.makeText(Appointment.this, "₱85/SQM ", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "85,000";
+                                }else if(cleaning == "Surface"){
+                                    Toast.makeText(Appointment.this, "₱75/SQM ", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "75,000";
+                                }
+                                break;
+                            case 3:
+                                if(cleaning == "Deep"){
+                                    Toast.makeText(Appointment.this, "₱80/SQM", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "80,000";
+                                }else if(cleaning == "Surface"){
+                                    Toast.makeText(Appointment.this, "₱65/SQM ", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "65,000";
+                                }
+                                break;
+                            case 4:
+                                if(cleaning == "Deep"){
+                                    Toast.makeText(Appointment.this, "₱75/SQM", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "75,000";
+                                }else if(cleaning == "Surface"){
+                                    Toast.makeText(Appointment.this, "₱60/SQM ", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "60,000";
+                                }
+                                break;
+                            case 5:
+                                if(cleaning == "Deep"){
+                                    Toast.makeText(Appointment.this, "₱70/SQM", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "70,000";
+                                }else if(cleaning == "Surface"){
+                                    Toast.makeText(Appointment.this, "₱55/SQM ", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "55,000";
+                                }
+                                break;
+                            case 6:
+                                if(cleaning == "Deep"){
+                                    Toast.makeText(Appointment.this, "₱65/SQM", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "65,000";
+                                }else if(cleaning == "Surface"){
+                                    Toast.makeText(Appointment.this, "₱50/SQM ", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "50,000";
+                                }
+                                break;
+                            case 7:
+                                if(cleaning == "Deep"){
+                                    Toast.makeText(Appointment.this, "₱60/SQM", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "60,000";
+                                }else if(cleaning == "Surface"){
+                                    Toast.makeText(Appointment.this, "₱45/SQM ", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "45,000";
+                                }
+                                break;
+                        }
                         break;
-
                 }
             }
         });
 
+        sSQM.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                switch(i){
+                    case 1:
+                        if(cleaning == "Deep"){
+                            Toast.makeText(Appointment.this, "₱4,200.00", Toast.LENGTH_SHORT).show();
+                            estimatedPrice = "4,200.00";
+                        }else if(cleaning == "Surface"){
+                            Toast.makeText(Appointment.this, "₱3,750.00", Toast.LENGTH_SHORT).show();
+                            estimatedPrice = "₱3,750.00";
+                        }
+                        break;
+                    case 2:
+                        if(cleaning == "Deep"){
+                            Toast.makeText(Appointment.this, "₱85/SQM ", Toast.LENGTH_SHORT).show();
+                            estimatedPrice = "85,000";
+                        }else if(cleaning == "Surface"){
+                            Toast.makeText(Appointment.this, "₱75/SQM ", Toast.LENGTH_SHORT).show();
+                            estimatedPrice = "75,000";
+                        }
+                        break;
+                    case 3:
+                        if(cleaning == "Deep"){
+                            Toast.makeText(Appointment.this, "₱80/SQM", Toast.LENGTH_SHORT).show();
+                            estimatedPrice = "80,000";
+                        }else if(cleaning == "Surface"){
+                            Toast.makeText(Appointment.this, "₱65/SQM ", Toast.LENGTH_SHORT).show();
+                            estimatedPrice = "65,000";
+                        }
+                        break;
+                    case 4:
+                        if(cleaning == "Deep"){
+                            Toast.makeText(Appointment.this, "₱75/SQM", Toast.LENGTH_SHORT).show();
+                            estimatedPrice = "75,000";
+                        }else if(cleaning == "Surface"){
+                            Toast.makeText(Appointment.this, "₱60/SQM ", Toast.LENGTH_SHORT).show();
+                            estimatedPrice = "60,000";
+                        }
+                        break;
+                    case 5:
+                        if(cleaning == "Deep"){
+                            Toast.makeText(Appointment.this, "₱70/SQM", Toast.LENGTH_SHORT).show();
+                            estimatedPrice = "70,000";
+                        }else if(cleaning == "Surface"){
+                            Toast.makeText(Appointment.this, "₱55/SQM ", Toast.LENGTH_SHORT).show();
+                            estimatedPrice = "55,000";
+                        }
+                        break;
+                    case 6:
+                        if(cleaning == "Deep"){
+                            Toast.makeText(Appointment.this, "₱65/SQM", Toast.LENGTH_SHORT).show();
+                            estimatedPrice = "65,000";
+                        }else if(cleaning == "Surface"){
+                            Toast.makeText(Appointment.this, "₱50/SQM ", Toast.LENGTH_SHORT).show();
+                            estimatedPrice = "50,000";
+                        }
+                        break;
+                    case 7:
+                        if(cleaning == "Deep"){
+                            Toast.makeText(Appointment.this, "₱60/SQM", Toast.LENGTH_SHORT).show();
+                            estimatedPrice = "60,000";
+                        }else if(cleaning == "Surface"){
+                            Toast.makeText(Appointment.this, "₱45/SQM ", Toast.LENGTH_SHORT).show();
+                            estimatedPrice = "45,000";
+                        }
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
 
 
@@ -149,83 +357,104 @@ public class Appointment extends AppCompatActivity {
 
 
 
-        sSQM.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if(sSQM.getSelectedItem().toString().equalsIgnoreCase("Select among the choices...")){
-                    Toast.makeText(Appointment.this, "Please select the square meter", Toast.LENGTH_SHORT).show();
-                }else if(sSQM.getSelectedItem().toString().equalsIgnoreCase("Not sure")){
-                    Toast.makeText(Appointment.this, "Please read the note", Toast.LENGTH_SHORT).show();
-                    tvNote.setVisibility(View.VISIBLE);
-                }
-                switch(i){
-                    case 1:
-                        if(cleaning == "Deep"){
-                            Toast.makeText(Appointment.this, "₱4,200.00", Toast.LENGTH_SHORT).show();
-                            estimatedPrice = "4,200.00";
-                        }else if(cleaning == "Surface"){
-                            Toast.makeText(Appointment.this, "₱3,750.00", Toast.LENGTH_SHORT).show();
-                            estimatedPrice = "₱3,750.00";
-                        }
-                        break;
-                    case 2:
-                        if(cleaning == "Deep"){
-                            Toast.makeText(Appointment.this, "₱85/SQM ", Toast.LENGTH_SHORT).show();
-                            estimatedPrice = "₱85/SQM";
-                        }else if(cleaning == "Surface"){
-                            Toast.makeText(Appointment.this, "₱75/SQM ", Toast.LENGTH_SHORT).show();
-                        }
-                        break;
-                    case 3:
-                        if(cleaning == "Deep"){
-                            Toast.makeText(Appointment.this, "₱80/SQM", Toast.LENGTH_SHORT).show();
-                        }else if(cleaning == "Surface"){
-                            Toast.makeText(Appointment.this, "₱65/SQM ", Toast.LENGTH_SHORT).show();
-                        }
-                        break;
-                    case 4:
-                        if(cleaning == "Deep"){
-                            Toast.makeText(Appointment.this, "₱75/SQM", Toast.LENGTH_SHORT).show();
-                        }else if(cleaning == "Surface"){
-                            Toast.makeText(Appointment.this, "₱60/SQM ", Toast.LENGTH_SHORT).show();
-                        }
-                        break;
-                    case 5:
-                        if(cleaning == "Deep"){
-                            Toast.makeText(Appointment.this, "₱70/SQM", Toast.LENGTH_SHORT).show();
-                        }else if(cleaning == "Surface"){
-                            Toast.makeText(Appointment.this, "₱55/SQM ", Toast.LENGTH_SHORT).show();
-                        }
-                        break;
-                    case 6:
-                        if(cleaning == "Deep"){
-                            Toast.makeText(Appointment.this, "₱65/SQM", Toast.LENGTH_SHORT).show();
-                        }else if(cleaning == "Surface"){
-                            Toast.makeText(Appointment.this, "₱50/SQM ", Toast.LENGTH_SHORT).show();
-                        }
-                        break;
-                    case 7:
-                        if(cleaning == "Deep"){
-                            Toast.makeText(Appointment.this, "₱60/SQM", Toast.LENGTH_SHORT).show();
-                        }else if(cleaning == "Surface"){
-                            Toast.makeText(Appointment.this, "₱45/SQM ", Toast.LENGTH_SHORT).show();
-                        }
-                        break;
-                }
-            }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
 
 
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String fullname = tvName.getText().toString();
+                String address = tvAddress.getText().toString();
+                String number = tvNumber.getText().toString();
+                String email = tvEmail.getText().toString();
+                String bookingID = tvID.getText().toString();
+                String service = tvService.getText().toString();
+                String clean = cleaning;
+                String sqm = sSQM.getSelectedItem().toString();
+                String person = etAccommodated.getText().toString();
+                String note = etNotes.getText().toString();
+                String price = estimatedPrice;
 
-                getAppointment();
+                String date = dp_date.getMonth() + "/" + dp_date.getDayOfMonth() + "/" + dp_date.getYear();
+                String timee;
+
+                if(tpTime.getCurrentHour() < 12 ){
+                    timee = "AM";
+                }else{
+                    timee = "PM";
+                }
+
+                tpTime.setIs24HourView(false);
+
+                String time = null;
+
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                    int hr;
+                    switch (tpTime.getHour()){
+                        case 13:
+                            hr = 1;
+                            break;
+                        case 14:
+                            hr = 2;
+                            break;
+                        case 15:
+                            hr = 3;
+                            break;
+                        case 16:
+                            hr = 4;
+                            break;
+                        case 17:
+                            hr = 5;
+                            break;
+                        case 18:
+                            hr = 6;
+                            break;
+                        case 19:
+                            hr = 7;
+                            break;
+                        case 20:
+                            hr = 8;
+                            break;
+                        case 21:
+                            hr = 9;
+                            break;
+                        case 22:
+                            hr = 10;
+                            break;
+                        case 23:
+                            hr = 11;
+                            break;
+                        case 24:
+                            hr = 12;
+                            break;
+                        default:
+                            hr = tpTime.getHour();
+                    }
+                    time = hr + ": " + tpTime.getMinute() + " " + timee;
+                }
+
+                if(sSQM.getSelectedItem().toString().equalsIgnoreCase("Select among the choices...")){
+                    Toast.makeText(Appointment.this, "Please select the square meter", Toast.LENGTH_SHORT).show();
+
+                }else{
+                    Intent i = new Intent(Appointment.this, Transaction.class);
+                    i.putExtra("Fullname", fullname);
+                    i.putExtra("Address", address);
+                    i.putExtra("Number", number);
+                    i.putExtra("Email", email);
+                    i.putExtra("ID", bookingID);
+                    i.putExtra("Service", service);
+                    i.putExtra("Cleaning", cleaning);
+                    i.putExtra("SQM", sqm);
+                    i.putExtra("Person", person);
+                    i.putExtra("Note", note);
+                    i.putExtra("Date", date);
+                    i.putExtra("Time", time);
+                    i.putExtra("Price", price);
+                    startActivity(i);
+                }
+
+
 
             }
         });
@@ -252,101 +481,371 @@ public class Appointment extends AppCompatActivity {
         sItems.setAdapter(adapter);
     }
 
-    public void getAppointment(){
-        if(sSQM.getSelectedItem().toString().equalsIgnoreCase("Select among the choices...")){
-            Toast.makeText(Appointment.this, "Please select the square meter", Toast.LENGTH_SHORT).show();
-        }else if(sSQM.getSelectedItem().toString().equalsIgnoreCase("Not sure")){
-            Toast.makeText(Appointment.this, "Please read the note", Toast.LENGTH_SHORT).show();
-            tvNote.setVisibility(View.VISIBLE);
-            String fullname = tvName.getText().toString();
-            String address = tvAddress.getText().toString();
-            String number = tvNumber.getText().toString();
-            String email = tvEmail.getText().toString();
-            String bookingID = tvID.getText().toString();
-            String service = tvService.getText().toString();
-            String clean = cleaning;
-            String sqm = sSQM.getSelectedItem().toString();
-            String person = etAccommodated.getText().toString();
-            String note = etNotes.getText().toString();
+//    public void getAppointment(){
+//        if(sSQM.getSelectedItem().toString().equalsIgnoreCase("Select among the choices...")){
+//            Toast.makeText(Appointment.this, "Please select the square meter", Toast.LENGTH_SHORT).show();
+//        }else if(sSQM.getSelectedItem().toString().equalsIgnoreCase("Not sure")){
+//            Toast.makeText(Appointment.this, "Please read the note", Toast.LENGTH_SHORT).show();
+//            tvNote.setVisibility(View.VISIBLE);
+//            String fullname = tvName.getText().toString();
+//            String address = tvAddress.getText().toString();
+//            String number = tvNumber.getText().toString();
+//            String email = tvEmail.getText().toString();
+//            String bookingID = tvID.getText().toString();
+//            String service = tvService.getText().toString();
+//            String clean = cleaning;
+//            String sqm = sSQM.getSelectedItem().toString();
+//            String person = etAccommodated.getText().toString();
+//            String note = etNotes.getText().toString();
+//            String price = estimatedPrice;
+//
+//            String date = dp_date.getMonth() + "/" + dp_date.getDayOfMonth() + "/" + dp_date.getYear();
+//            String timee;
+//
+//            if(tpTime.getCurrentHour() < 12 ){
+//                timee = "AM";
+//            }else{
+//                timee = "PM";
+//            }
+//
+//            tpTime.setIs24HourView(false);
+//
+//            String time = null;
+//
+//            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+//                String hr= "";
+//                switch (tpTime.getHour()){
+//                    case 13:
+//                        hr = "1";
+//                        break;
+//                    case 14:
+//                        hr = "2";
+//                        break;
+//                    case 15:
+//                        hr = "3";
+//                        break;
+//                    case 16:
+//                        hr = "4";
+//                        break;
+//                    case 17:
+//                        hr = "5";
+//                        break;
+//                    case 18:
+//                        hr = "6";
+//                        break;
+//                    case 19:
+//                        hr = "7";
+//                        break;
+//                    case 20:
+//                        hr = "8";
+//                        break;
+//                    case 21:
+//                        hr = "9";
+//                        break;
+//                    case 22:
+//                        hr = "10";
+//                        break;
+//                    case 23:
+//                        hr = "11";
+//                        break;
+//                    case 24:
+//                        hr = "12";
+//                        break;
+//                }
+//                time = hr + ": " + tpTime.getMinute() + " " + timee;
+//            }
+//
+//            AppointmentDetails appointmentDetails = new AppointmentDetails(fullname,address,number,email,bookingID,service,clean,sqm,person,note,date,time,"","Pending");
+//            String finalTime = time;
+//            myRef.child(bookingID).setValue(appointmentDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                @Override
+//                public void onComplete(@NonNull Task<Void> task) {
+//
+//                    if (task.isSuccessful()) {
+//                        Toast.makeText(Appointment.this, "Success", Toast.LENGTH_SHORT).show();
+//                        Intent i = new Intent(Appointment.this, Transaction.class);
+//                        i.putExtra("Fullname", fullname);
+//                        i.putExtra("Address", address);
+//                        i.putExtra("Number", number);
+//                        i.putExtra("Email", email);
+//                        i.putExtra("ID", bookingID);
+//                        i.putExtra("Service", service);
+//                        i.putExtra("Cleaning", cleaning);
+//                        i.putExtra("SQM", sqm);
+//                        i.putExtra("Person", person);
+//                        i.putExtra("Note", note);
+//                        i.putExtra("Date", date);
+//                        i.putExtra("Time", finalTime);
+//                        i.putExtra("Price", price);
+//                        startActivity(i);
+//
+//                    }else{
+//                        Toast.makeText(Appointment.this, "Failed", Toast.LENGTH_SHORT).show();
+//
+//                    }
+//                }
+//            });
+//
+//        }else{
+//            String fullname = tvName.getText().toString();
+//            String address = tvAddress.getText().toString();
+//            String number = tvNumber.getText().toString();
+//            String email = tvEmail.getText().toString();
+//            String bookingID = tvID.getText().toString();
+//            String service = tvService.getText().toString();
+//            String clean = cleaning;
+//            String sqm = sSQM.getSelectedItem().toString();
+//            String person = etAccommodated.getText().toString();
+//            String note = etNotes.getText().toString();
+//            String price = estimatedPrice;
+//
+//
+//            String date = dp_date.getMonth() + "/" + dp_date.getDayOfMonth() + "/" + dp_date.getYear();
+//            String timee;
+//            if(tpTime.getCurrentHour() < 12 ){
+//                timee = "AM";
+//            }else{
+//                timee = "PM";
+//            }
+//            tpTime.setIs24HourView(false);
+//
+//            String time = null;
+//
+//            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+//                String hr= "";
+//                switch (tpTime.getHour()){
+//                    case 13:
+//                        hr = "1";
+//                        break;
+//                    case 14:
+//                        hr = "2";
+//                        break;
+//                    case 15:
+//                        hr = "3";
+//                        break;
+//                    case 16:
+//                        hr = "4";
+//                        break;
+//                    case 17:
+//                        hr = "5";
+//                        break;
+//                    case 18:
+//                        hr = "6";
+//                        break;
+//                    case 19:
+//                        hr = "7";
+//                        break;
+//                    case 20:
+//                        hr = "8";
+//                        break;
+//                    case 21:
+//                        hr = "9";
+//                        break;
+//                    case 22:
+//                        hr = "10";
+//                        break;
+//                    case 23:
+//                        hr = "11";
+//                        break;
+//                    case 24:
+//                        hr = "12";
+//                        break;
+//                }
+//                time = hr + ": " + tpTime.getMinute() + " " + timee;
+//            }
+//            AppointmentDetails appointmentDetails = new AppointmentDetails(fullname,address,number,email,bookingID,service,clean,sqm,person,note,date,time,"","Pending");
+//            myRef.child(bookingID).setValue(appointmentDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                @Override
+//                public void onComplete(@NonNull Task<Void> task) {
+//
+//                    if (task.isSuccessful()) {
+//
+//                        Toast.makeText(Appointment.this, "Success", Toast.LENGTH_SHORT).show();
+//                        Intent i = new Intent(Appointment.this, Transaction.class);
+//                        i.putExtra("Fullname", fullname);
+//                        i.putExtra("Address", address);
+//                        i.putExtra("Number", number);
+//                        i.putExtra("Email", email);
+//                        i.putExtra("ID", bookingID);
+//                        i.putExtra("Service", service);
+//                        i.putExtra("Cleaning", cleaning);
+//                        i.putExtra("SQM", sqm);
+//                        i.putExtra("Person", person);
+//                        i.putExtra("Note", note);
+//                        i.putExtra("Price", price);
+//                        startActivity(i);
+//
+//                    }else{
+//                        Toast.makeText(Appointment.this, "Failed", Toast.LENGTH_SHORT).show();
+//
+//                    }
+//                }
+//            });
+//
+//
+//        }
+//
 
-            String date = dp_date.getMonth() + "/" + dp_date.getDayOfMonth() + "/" + dp_date.getYear();
-            String timee;
-            if(tpTime.getCurrentHour() < 12 ){
-                timee = "AM";
-            }else{
-                timee = "PM";
-            }
-            String time = tpTime.getCurrentHour() + ": " + tpTime.getCurrentMinute() + " " + timee;
 
-            AppointmentDetails appointmentDetails = new AppointmentDetails(fullname,address,number,email,bookingID,service,clean,sqm,person,note,date,time);
-            myRef.child(bookingID).setValue(appointmentDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
+//    }
+    public void estimatedPrice(){
+        rgCleaning.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch(i){
+                    case R.id.rbDeep:
+                        cleaning = "Deep";
+                        if(sSQM.getSelectedItem().toString().equalsIgnoreCase("Select among the choices...")){
+                            Toast.makeText(Appointment.this, "Please select the square meter", Toast.LENGTH_SHORT).show();
+                        }else if(sSQM.getSelectedItem().toString().equalsIgnoreCase("Not sure")){
+                            Toast.makeText(Appointment.this, "Please read the note", Toast.LENGTH_SHORT).show();
+                            estimatedPrice = "PENDING";
+                            tvNote.setVisibility(View.VISIBLE);
+                        }
+                        switch(sSQM.getSelectedItemPosition()){
+                            case 1:
+                                if(cleaning == "Deep"){
+                                    Toast.makeText(Appointment.this, "₱4,200.00", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "4,200.00";
+                                }else if(cleaning == "Surface"){
+                                    Toast.makeText(Appointment.this, "₱3,750.00", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "₱3,750.00";
+                                }
+                                break;
+                            case 2:
+                                if(cleaning == "Deep"){
+                                    Toast.makeText(Appointment.this, "₱85/SQM ", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "85,000";
+                                }else if(cleaning == "Surface"){
+                                    Toast.makeText(Appointment.this, "₱75/SQM ", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "75,000";
+                                }
+                                break;
+                            case 3:
+                                if(cleaning == "Deep"){
+                                    Toast.makeText(Appointment.this, "₱80/SQM", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "80,000";
+                                }else if(cleaning == "Surface"){
+                                    Toast.makeText(Appointment.this, "₱65/SQM ", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "65,000";
+                                }
+                                break;
+                            case 4:
+                                if(cleaning == "Deep"){
+                                    Toast.makeText(Appointment.this, "₱75/SQM", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "75,000";
+                                }else if(cleaning == "Surface"){
+                                    Toast.makeText(Appointment.this, "₱60/SQM ", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "60,000";
+                                }
+                                break;
+                            case 5:
+                                if(cleaning == "Deep"){
+                                    Toast.makeText(Appointment.this, "₱70/SQM", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "70,000";
+                                }else if(cleaning == "Surface"){
+                                    Toast.makeText(Appointment.this, "₱55/SQM ", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "55,000";
+                                }
+                                break;
+                            case 6:
+                                if(cleaning == "Deep"){
+                                    Toast.makeText(Appointment.this, "₱65/SQM", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "65,000";
+                                }else if(cleaning == "Surface"){
+                                    Toast.makeText(Appointment.this, "₱50/SQM ", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "50,000";
+                                }
+                                break;
+                            case 7:
+                                if(cleaning == "Deep"){
+                                    Toast.makeText(Appointment.this, "₱60/SQM", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "60,000";
+                                }else if(cleaning == "Surface"){
+                                    Toast.makeText(Appointment.this, "₱45/SQM ", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "45,000";
+                                }
+                                break;
+                        }
 
-                    if (task.isSuccessful()) {
+                    case R.id.rbSurface:
+                        cleaning = "Surface";
+                        if(sSQM.getSelectedItem().toString().equalsIgnoreCase("Select among the choices...")){
+                            Toast.makeText(Appointment.this, "Please select the square meter", Toast.LENGTH_SHORT).show();
+                        }else if(sSQM.getSelectedItem().toString().equalsIgnoreCase("Not sure")){
+                            Toast.makeText(Appointment.this, "Please read the note", Toast.LENGTH_SHORT).show();
+                            estimatedPrice = "PENDING";
+                            tvNote.setVisibility(View.VISIBLE);
+                        }
+                        switch(sSQM.getSelectedItemPosition()){
+                            case 1:
+                                if(cleaning == "Deep"){
+                                    Toast.makeText(Appointment.this, "₱4,200.00", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "4,200.00";
+                                }else if(cleaning == "Surface"){
+                                    Toast.makeText(Appointment.this, "₱3,750.00", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "₱3,750.00";
+                                }
+                                break;
+                            case 2:
+                                if(cleaning == "Deep"){
+                                    Toast.makeText(Appointment.this, "₱85/SQM ", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "85,000";
+                                }else if(cleaning == "Surface"){
+                                    Toast.makeText(Appointment.this, "₱75/SQM ", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "75,000";
+                                }
+                                break;
+                            case 3:
+                                if(cleaning == "Deep"){
+                                    Toast.makeText(Appointment.this, "₱80/SQM", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "80,000";
+                                }else if(cleaning == "Surface"){
+                                    Toast.makeText(Appointment.this, "₱65/SQM ", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "65,000";
+                                }
+                                break;
+                            case 4:
+                                if(cleaning == "Deep"){
+                                    Toast.makeText(Appointment.this, "₱75/SQM", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "75,000";
+                                }else if(cleaning == "Surface"){
+                                    Toast.makeText(Appointment.this, "₱60/SQM ", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "60,000";
+                                }
+                                break;
+                            case 5:
+                                if(cleaning == "Deep"){
+                                    Toast.makeText(Appointment.this, "₱70/SQM", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "70,000";
+                                }else if(cleaning == "Surface"){
+                                    Toast.makeText(Appointment.this, "₱55/SQM ", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "55,000";
+                                }
+                                break;
+                            case 6:
+                                if(cleaning == "Deep"){
+                                    Toast.makeText(Appointment.this, "₱65/SQM", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "65,000";
+                                }else if(cleaning == "Surface"){
+                                    Toast.makeText(Appointment.this, "₱50/SQM ", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "50,000";
+                                }
+                                break;
+                            case 7:
+                                if(cleaning == "Deep"){
+                                    Toast.makeText(Appointment.this, "₱60/SQM", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "60,000";
+                                }else if(cleaning == "Surface"){
+                                    Toast.makeText(Appointment.this, "₱45/SQM ", Toast.LENGTH_SHORT).show();
+                                    estimatedPrice = "45,000";
+                                }
+                                break;
+                        }
 
-                        Toast.makeText(Appointment.this, "Success", Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(Appointment.this, Transaction.class);
-                        i.putExtra("ID", bookingID);
-                        i.putExtra("Cleaning", cleaning);
-                        i.putExtra("SQM", sqm);
-                        startActivity(i);
-
-                    }else{
-                        Toast.makeText(Appointment.this, "Failed", Toast.LENGTH_SHORT).show();
-
-                    }
                 }
-            });
-
-
-        }else{
-            String fullname = tvName.getText().toString();
-            String address = tvAddress.getText().toString();
-            String number = tvNumber.getText().toString();
-            String email = tvEmail.getText().toString();
-            String bookingID = tvID.getText().toString();
-            String service = tvService.getText().toString();
-            String clean = cleaning;
-            String sqm = sSQM.getSelectedItem().toString();
-            String person = etAccommodated.getText().toString();
-            String note = etNotes.getText().toString();
-
-            String date = dp_date.getMonth() + "/" + dp_date.getDayOfMonth() + "/" + dp_date.getYear();
-            String timee;
-            if(tpTime.getCurrentHour() < 12 ){
-                timee = "AM";
-            }else{
-                timee = "PM";
             }
-            String time = tpTime.getCurrentHour() + ": " + tpTime.getCurrentMinute() + " " + timee;
-
-            AppointmentDetails appointmentDetails = new AppointmentDetails(fullname,address,number,email,bookingID,service,clean,sqm,person,note,date,time);
-            myRef.child(bookingID).setValue(appointmentDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-
-                    if (task.isSuccessful()) {
-
-                        Toast.makeText(Appointment.this, "Success", Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(Appointment.this, Transaction.class);
-                        i.putExtra("ID", bookingID);
-                        i.putExtra("Cleaning", cleaning);
-                        i.putExtra("SQM", sqm);
-                        startActivity(i);
-
-                    }else{
-                        Toast.makeText(Appointment.this, "Failed", Toast.LENGTH_SHORT).show();
-
-                    }
-                }
-            });
-
-
-        }
-
-
+        });
 
     }
-
 }

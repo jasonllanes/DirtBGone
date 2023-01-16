@@ -161,7 +161,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-                android:text="Post-construction Cleaning"
+                android:text="Post-Construction Cleaning"
                 android:textColor="@color/blue"
                 android:textStyle="bold"
                 android:textSize="20dp"/>
@@ -224,7 +224,7 @@
                 android:textColor="@color/black"
                 android:textSize="20dp"/>
             <TimePicker
-                android:id="@+id/tvTime"
+                android:id="@+id/tpTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/gradient"
     android:orientation="vertical"
     tools:context=".Services">
 
@@ -32,16 +32,16 @@
                 android:textColor="@color/white"
                 android:textSize="20dp"
                 android:textStyle="bold"
-                android:text="Hi Jessamine!"/>
+                android:text="Hi [User]!"/>
 
-            <TextView
-                android:id="@+id/tvEditProfile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/edit"
-                android:textColor="@color/black"
-                android:textSize="12dp"
-                android:textStyle="bold" />
+<!--            <TextView-->
+<!--                android:id="@+id/tvEditProfile"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/edit"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="12dp"-->
+<!--                android:textStyle="bold" />-->
         </LinearLayout>
 
         <View
@@ -90,16 +90,38 @@
                 android:textColor="@color/black"
                 android:padding="20dp"/>
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="OVERVIEW OF THE BUSINESS SERVICES:
-                        \n-Residential Cleaning
-                        \n-Commercial Cleaning
-                        \n-Post Construction Clearning
-                        \n-Green Cleaning Services
-                        \n-Sanitation and Disinfection"
-                android:textColor="@color/blue"/>
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <Button
+                    android:id="@+id/btnPending"
+                    android:layout_width="150dp"
+                    android:layout_height="30dp"
+                    android:text="Pending Books"
+                    android:background="@color/white"
+                    android:textColor="@color/blue"/>
+                <Button
+                    android:id="@+id/btnUpcoming"
+                    android:layout_width="150dp"
+                    android:layout_height="30dp"
+                    android:text="Upcoming Books"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:textColor="@color/blue"/>
+                <Button
+                    android:id="@+id/btnFinished"
+                    android:layout_width="150dp"
+                    android:layout_height="30dp"
+                    android:text="Finished Books"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:textColor="@color/blue"/>
+
+            </LinearLayout>
+
 
         </LinearLayout>
 

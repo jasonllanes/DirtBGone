@@ -53,7 +53,7 @@
                 android:background="@drawable/logo" />
 
             <Button
-                android:id="@+id/btnNext"
+                android:id="@+id/btnPending"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -67,7 +67,7 @@
                 android:background="@drawable/container"/>
 
             <Button
-                android:id="@+id/btnNext"
+                android:id="@+id/btnUpcoming"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -81,7 +81,7 @@
                 android:background="@drawable/container"/>
 
             <Button
-                android:id="@+id/btnNext"
+                android:id="@+id/btnCompleted"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"

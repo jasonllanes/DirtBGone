@@ -40,6 +40,19 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/red"
+                android:text="SUMMARY"
+                android:gravity="center"
+                android:textSize="45dp"
+                android:textStyle="bold"/>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/black"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -161,13 +174,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-                android:text="Residential Cleaning"
+                android:text="[Service]"
                 android:textColor="@color/blue"
                 android:textStyle="bold"
                 android:textSize="20dp"/>
 
 
             <TextView
+                android:id="@+id/tvLCleaning"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Type of Cleaning: "
@@ -175,30 +189,48 @@
                 android:textSize="20dp" />
 
             <TextView
-
+                android:id="@+id/tvCleaning"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-                android:text="Residential Cleaning"
+                android:text="[Cleaning]"
                 android:textColor="@color/blue"
                 android:textStyle="bold"
                 android:textSize="20dp"/>
 
             <TextView
+                android:id="@+id/tvLSQM"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Square Meters: "
                 android:textColor="@color/black"
                 android:textSize="20dp"/>
             <TextView
-                android:id="@+id/tvService"
+                android:id="@+id/tvSQM"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-                android:text="Residential Cleaning"
+                android:text="[Square Meters]"
                 android:textColor="@color/blue"
                 android:textStyle="bold"
                 android:textSize="20dp"/>
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Estimated Price: "-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="20dp"/>-->
+<!--            <TextView-->
+<!--                android:id="@+id/tvPrice"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="15dp"-->
+<!--                android:text="[P45/SQM]"-->
+<!--                android:textColor="@color/blue"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textSize="20dp"/>-->
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -207,11 +239,11 @@
                 android:textColor="@color/black"
                 android:textSize="20dp"/>
             <TextView
-                android:id="@+id/tvService"
+                android:id="@+id/tvPerson"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-                android:text="Residential Cleaning"
+                android:text="[Person]"
                 android:textColor="@color/blue"
                 android:textStyle="bold"
                 android:textSize="20dp"/>
@@ -224,11 +256,11 @@
                 android:textColor="@color/black"
                 android:textSize="20dp"/>
             <TextView
-                android:id="@+id/tvService"
+                android:id="@+id/tvNote"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-                android:text="Residential Cleaning"
+                android:text="[Note]"
                 android:textColor="@color/blue"
                 android:textStyle="bold"
                 android:textSize="20dp"/>
@@ -241,11 +273,11 @@
                 android:textColor="@color/black"
                 android:textSize="20dp"/>
             <TextView
-                android:id="@+id/tvService"
+                android:id="@+id/tvDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-                android:text="Residential Cleaning"
+                android:text="[Date]"
                 android:textColor="@color/blue"
                 android:textStyle="bold"
                 android:textSize="20dp"/>
@@ -257,15 +289,45 @@
                 android:textColor="@color/black"
                 android:textSize="20dp"/>
             <TextView
-                android:id="@+id/tvService"
+                android:id="@+id/tvTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-                android:text="Residential Cleaning"
+                android:text="[Time]"
                 android:textColor="@color/blue"
                 android:textStyle="bold"
                 android:textSize="20dp"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Payment: "
+                android:textColor="@color/black"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/tvPayment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text="[Payment]"
+                android:textColor="@color/blue"
+                android:textStyle="bold"
+                android:textSize="20dp"/>
+
+            <Button
+                android:id="@+id/btnProof"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="Show Proof"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/blue"
+                android:background="@drawable/container"/>
 
             <Button
                 android:id="@+id/btnNext"
@@ -275,7 +337,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
-                android:text="Next"
+                android:text="Book"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 android:textColor="@color/blue"

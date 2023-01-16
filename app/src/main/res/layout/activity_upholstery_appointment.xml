@@ -173,14 +173,18 @@
                 android:text="SOFAS: "
                 android:textColor="@color/black"
                 android:textSize="20dp" />
+
             <CheckBox
+                android:id="@+id/s1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1 Seater(Solo Couch, La-Z Boy, Single Recliner, Executive Chair)"
                 android:textColor="@color/blue"
-                android:textStyle="bold"
-                android:textSize="20dp"/>
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
             <CheckBox
+                android:id="@+id/s2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2 Seater(Love Seat, Chaise Lounge, Double Recliner)"
@@ -188,6 +192,7 @@
                 android:textStyle="bold"
                 android:textSize="20dp"/>
             <CheckBox
+                android:id="@+id/s3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="3 Seater(Triple Seater Couch)"
@@ -195,6 +200,7 @@
                 android:textStyle="bold"
                 android:textSize="20dp"/>
             <CheckBox
+                android:id="@+id/s4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="4 Seater(Four-Seater Couch)"
@@ -202,6 +208,7 @@
                 android:textStyle="bold"
                 android:textSize="20dp"/>
             <CheckBox
+                android:id="@+id/s5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="5 Seater(Five-Seater Couch)"
@@ -209,6 +216,7 @@
                 android:textStyle="bold"
                 android:textSize="20dp"/>
             <CheckBox
+                android:id="@+id/s6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="6 Seater(Five-Seater Couch)"
@@ -223,6 +231,7 @@
                 android:textColor="@color/black"
                 android:textSize="20dp" />
             <CheckBox
+                android:id="@+id/m1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Single Bed (36'' X 75'')"
@@ -230,6 +239,7 @@
                 android:textStyle="bold"
                 android:textSize="20dp"/>
             <CheckBox
+                android:id="@+id/m2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Standard Twin (38'' X 75'') /\nFull Size (54'' X 75'')"
@@ -237,6 +247,7 @@
                 android:textStyle="bold"
                 android:textSize="20dp"/>
             <CheckBox
+                android:id="@+id/m3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Standard Queen Size (60'' X 80'') /\nCalifornia Queen Size (60'' X 80'')"
@@ -244,6 +255,7 @@
                 android:textStyle="bold"
                 android:textSize="20dp"/>
             <CheckBox
+                android:id="@+id/m4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Standard King Size (78'' X 80'') /\nCalfornia King Size (72'' X 84'')"
@@ -251,6 +263,7 @@
                 android:textStyle="bold"
                 android:textSize="20dp"/>
             <CheckBox
+                android:id="@+id/m5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Sofa Bed"
@@ -265,6 +278,7 @@
                 android:textColor="@color/black"
                 android:textSize="20dp" />
             <CheckBox
+                android:id="@+id/c1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Dining Chair, Computer Chair, Office Chair, Bar Stool"
@@ -279,6 +293,7 @@
                 android:textColor="@color/black"
                 android:textSize="20dp" />
             <CheckBox
+                android:id="@+id/fr1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Floor Rugs (Not Carpet, Tiles/Flooring)"
@@ -309,28 +324,6 @@
                 android:textSize="20dp"
                 android:hint="Minimum of 100 SQM..."/>
 
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="SQUARE METERS: "
-                android:layout_gravity="center"
-                android:textColor="@color/black"
-                android:textSize="20dp"/>
-            <Spinner
-                android:id="@+id/sSQM"
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:text="1231331"
-                tools:listitem=""
-                android:layout_gravity="center"
-                android:backgroundTint="@color/black"
-                android:textColor="@color/blue"
-                android:textStyle="bold"
-                android:textSize="25dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -389,7 +382,7 @@
                 android:textColor="@color/black"
                 android:textSize="20dp"/>
             <TimePicker
-                android:id="@+id/tvTime"
+                android:id="@+id/tpTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"

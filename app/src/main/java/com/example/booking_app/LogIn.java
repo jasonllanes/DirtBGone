@@ -52,7 +52,8 @@ public class LogIn extends AppCompatActivity {
             public void onClick(View view) {
 
 
-
+                etEmail.setText("");
+                etPassword.setText("");
                 Intent i = new Intent(LogIn.this, SignUp.class);
                 startActivity(i);
             }
@@ -69,12 +70,20 @@ public class LogIn extends AppCompatActivity {
                 }else if(etPassword.getText().toString().isEmpty()){
                     etPassword.setError("Please input your password.");
                     pbLoading.setVisibility(View.GONE);
+                }else if(etEmail.getText().toString().equalsIgnoreCase("admin@gmail.com") && etPassword.getText().toString().equalsIgnoreCase("admin123")){
+                    etEmail.setText("");
+                    etPassword.setText("");
+                    pbLoading.setVisibility(View.GONE);
+                    Intent i = new Intent(LogIn.this, AdminPane.class);
+                    startActivity(i);
                 }else{
                     mAuth.signInWithEmailAndPassword(etEmail.getText().toString(),etPassword.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 pbLoading.setVisibility(View.GONE);
+                                etEmail.setText("");
+                                etPassword.setText("");
                                 Toast.makeText(getApplicationContext(), "Log In successful!", Toast.LENGTH_LONG).show();
 
                                 // hide the progress bar
@@ -86,7 +95,7 @@ public class LogIn extends AppCompatActivity {
                             else {
                                 pbLoading.setVisibility(View.GONE);
                                 // Registration failed
-                                Toast.makeText(getApplicationContext(), "Registration failed!!" + " Please try again later", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), task.getException().toString(), Toast.LENGTH_LONG).show();
                                 // hide the progress bar
 
                             }
